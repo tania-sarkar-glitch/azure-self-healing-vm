@@ -1,0 +1,1 @@
+# azure-self-healing-vm
