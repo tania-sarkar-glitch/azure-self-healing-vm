@@ -1,1 +1,16 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
 
+# Variable files
+terraform.tfvars
+
+# Sensitive files
+*.pem
+*.key
+
+# Terraform lock file
+# Keep this file in Git for consistent provider versions
+# !.terraform.lock.hcl
