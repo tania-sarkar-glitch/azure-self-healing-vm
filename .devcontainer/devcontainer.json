@@ -1,0 +1,24 @@
+{
+  "name": "Azure Terraform Dev",
+
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y wget unzip curl gnupg lsb-release software-properties-common && wget -q https://releases.hashicorp.com/terraform/1.13.0/terraform_1.13.0_linux_amd64.zip && unzip -o terraform_1.13.0_linux_amd64.zip && sudo mv terraform /usr/local/bin/ && rm terraform_1.13.0_linux_amd64.zip && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "HashiCorp.terraform",
+        "ms-azuretools.vscode-azureterraform",
+        "ms-vscode.azurecli",
+        "ms-azuretools.vscode-bicep",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "terraform.languageServer.enable": true,
+        "editor.formatOnSave": true
+      }
+    }
+  }
+}
