@@ -46,3 +46,37 @@ variable "subnet_prefix" {
   type        = list(string)
   default     = ["10.0.1.0/24"]
 }
+variable "vnet_name" {
+  description = "Virtual Network name"
+  type        = string
+  default     = "vnet-demo"
+}
+
+variable "subnet_name" {
+  description = "Subnet name"
+  type        = string
+  default     = "subnet-demo"
+}
+
+variable "nsg_name" {
+  description = "Network Security Group name"
+  type        = string
+  default     = "nsg-demo"
+}
+
+variable "public_ip_name" {
+  description = "Public IP name"
+  type        = string
+  default     = "publicip-demo"
+}
+
+variable "nic_name" {
+  description = "Network Interface name"
+  type        = string
+  default     = "nic-demo"
+}
+
+variable "ssh_public_key" {
+  description = "SSH public key for the VM"
+  type        = string
+}
