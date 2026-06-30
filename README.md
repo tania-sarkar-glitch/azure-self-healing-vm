@@ -1,128 +1,396 @@
-# 🚀 Azure Self-Healing VM Project
+# 🚀 Azure Self-Healing VM | Azure Bicep & Terraform
 
-A cloud automation project that detects Nginx downtime on an Azure Linux VM and restores service automatically using Azure Logic Apps, Azure Monitor, Log Analytics, and a CronJob fallback flow.
+![Terraform](https://img.shields.io/badge/Terraform-1.13-844FBA?logo=terraform\&logoColor=white)
+![Microsoft Azure](https://img.shields.io/badge/Microsoft%20Azure-Cloud-0078D4?logo=microsoftazure\&logoColor=white)
+![Bicep](https://img.shields.io/badge/Bicep-Infrastructure%20as%20Code-4B53BC)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?logo=ubuntu\&logoColor=white)
+![Nginx](https://img.shields.io/badge/Nginx-Web%20Server-009639?logo=nginx\&logoColor=white)
+![Azure Monitor](https://img.shields.io/badge/Azure-Monitor-0078D4)
+![Logic Apps](https://img.shields.io/badge/Azure-Logic%20Apps-0066FF)
+![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)
 
----
-
-## 🌐 Demo & Proof
-
-> ⚠️ Azure resources were decommissioned after demonstration to avoid ongoing costs. Full proof of deployment, infrastructure, and automation is provided below.
-
-- 🎥 **Demo Videos:** [View Demo Links](video-links.md)
-- 📝 **Architecture Details:** [Read Architecture Docs](architechture.md)
-- 🚨 **Alert Rules Setup:** [View Alert Docs](alert-rule.md)
-
----
-
-## ✨ Overview
-
-This project demonstrates a practical self-healing workflow for a web service running on an Azure Virtual Machine. Instead of relying on a single point of failure, it implements three distinct recovery paths to ensure high availability: a manual trigger, a CronJob fallback check, and an Azure Monitor Alert Rule.
+> ### 🚀 A production-inspired Azure automation project demonstrating Infrastructure as Code, monitoring, alerting, and automated recovery of an Nginx web server using Azure native services.
 
 ---
 
-## 🚀 Features
+## 📌 Overview
 
-- Automated service restoration without human intervention
-- Azure Monitor integration via Log Analytics workspace
-- Logic App orchestration for HTTP triggering and remediation
-- Azure VM Run Command execution to restart inactive services
-- Infrastructure as Code deployment using Bicep
-- Three-tier fallback system (Alerts, CronJob, Manual)
+Modern cloud environments should recover automatically from service failures instead of relying solely on manual intervention.
 
----
+This project demonstrates a **self-healing Azure Linux Virtual Machine** running **Nginx**, where Azure monitoring services continuously monitor application health and automatically initiate recovery whenever the service becomes unavailable.
 
-## 🧠 Tech Stack & Components
+The infrastructure has been implemented using **two Infrastructure as Code (IaC) technologies**:
 
-- **Compute:** Azure Virtual Machine (Linux), Nginx
-- **Monitoring:** Azure Monitor, Log Analytics, Action Groups
-- **Automation:** Azure Logic Apps, VM Run Command, Shell Scripts
-- **IaC:** Bicep (`Infra/main.bicep`)
+* **Azure Bicep** (Azure-native IaC)
+* **HashiCorp Terraform** (Provider-based IaC)
+
+This repository showcases cloud automation, Infrastructure as Code, monitoring, alerting, and recovery workflows inspired by real production environments.
 
 ---
 
-## ⚙️ How It Works
-
-1. Nginx runs on the Azure Linux VM.
-2. A failure is detected (Nginx service stops).
-3. The failure is caught via an Azure Alert Rule, a local CronJob script, or triggered manually.
-4. An HTTP POST request is sent to the Azure Logic App webhook.
-5. The Logic App executes a Run Command (`systemctl restart nginx`) directly on the VM.
-6. The service is restored to a healthy state.
-
----
-
-## 🗺️ Architecture Workflow
+# 🏗️ Architecture
 
 ![Architecture Diagram](architechture.png)
 
----
+The solution combines Azure monitoring, automation, and Infrastructure as Code to automatically restore application availability.
 
-## 📸 Infrastructure & Service State
+📖 **Detailed architecture, workflow, design decisions, and engineering documentation are available in:**
 
-![Virtual Machine](screenshots/01-vm.png)
-![Resource Group](screenshots/13-resource-group.png)
-![Nginx Running](screenshots/02-nginx-running.png)
-![Nginx Inactive](screenshots/03-nginx-inactive.png)
+➡️ **[architecture.md](architecture.md)**
 
 ---
 
-## 🔍 Monitoring Layer
+# ✨ Project Highlights
 
-![Log Analytics Workspace](screenshots/04-log-analytics-workspace.png)
-![Log Analytics Query](screenshots/05-log-analytics-query.png)
-![Monitor Logs](screenshots/15-monitor-logs.png)
-
----
-
-## 🚨 Alerting System
-
-![Alert Rule](screenshots/06-alert-rule.png)
-![Action Group](screenshots/07-action-group.png)
-
----
-
-## ⚙️ Automation Flow (Logic Apps)
-
-![Logic App Flow](screenshots/08-logic-app-flow.png)
-![Logic App Run History](screenshots/09-logic-app-run-history.png)
-![HTTP Action](screenshots/14-http-action.png)
+| Feature                     | Status |
+| --------------------------- | :----: |
+| Azure Linux Virtual Machine |    ✅   |
+| Nginx Web Server            |    ✅   |
+| Azure Monitor               |    ✅   |
+| Log Analytics Workspace     |    ✅   |
+| Alert Rules                 |    ✅   |
+| Azure Logic Apps            |    ✅   |
+| Azure VM Run Command        |    ✅   |
+| Manual Recovery             |    ✅   |
+| Cron Job Recovery           |    ✅   |
+| Azure Bicep Deployment      |    ✅   |
+| Terraform Implementation    |    ✅   |
 
 ---
 
-## ⏰ Fallback Mechanism & Execution Evidence
+# ☁️ Infrastructure as Code
 
-![Cron Job](screenshots/10-cron-job.png)
-![Curl Localhost](screenshots/11-curl-localhost.png)
-![Activity Log](screenshots/12-activity-log.png)
+This project demonstrates the same Azure infrastructure using both Azure-native and cloud-agnostic Infrastructure as Code approaches.
+
+| Azure Resource               | Bicep | Terraform |
+| ---------------------------- | :---: | :-------: |
+| Resource Group               |   ✅   |     ✅     |
+| Virtual Network              |   ✅   |     ✅     |
+| Subnet                       |   ✅   |     ✅     |
+| Network Security Group       |   ✅   |     ✅     |
+| Public IP Address            |   ✅   |     ✅     |
+| Network Interface            |   ✅   |     ✅     |
+| Ubuntu Linux Virtual Machine |   ✅   |     ✅     |
+
+## Terraform Highlights
+
+The Terraform implementation follows engineering best practices by separating infrastructure into dedicated configuration files.
+
+* Provider configuration
+* Version management
+* Resource Group
+* Networking resources
+* Virtual Machine
+* Variables
+* Outputs
+
+### Terraform Workflow
+
+```bash
+terraform init
+terraform fmt
+terraform validate
+terraform plan
+terraform apply
+```
+
+### Validation
+
+The Terraform configuration has been successfully validated.
+
+```bash
+terraform init
+terraform fmt
+terraform validate
+```
+
+Validation Result:
+
+```text
+Success! The configuration is valid.
+```
+
+> **Note:** Infrastructure deployment requires an authenticated Azure CLI session and an active Azure subscription.
 
 ---
 
-## 📚 What I Learned
+# 🛠️ Technology Stack
 
-- Designing resilient, multi-path fallback mechanisms for cloud reliability
-- Applying core AZ-104 concepts (Monitor, Action Groups, Logic Apps) in a real-world scenario
-- Securely executing Run Commands on Azure VMs without exposing SSH ports
-- Utilizing Bicep for repeatable infrastructure deployment
-- Managing standard monitoring delays between failure and alert generation
-- Handling Run Command conflicts during rapid trigger executions
+### ☁️ Cloud
+
+* Microsoft Azure
+
+### 🏗️ Infrastructure as Code
+
+* Azure Bicep
+* Terraform
+
+### 💻 Compute
+
+* Azure Linux Virtual Machine
+* Ubuntu 22.04 LTS
+* Nginx
+
+### 🌐 Networking
+
+* Virtual Network
+* Subnet
+* Network Security Group
+* Public IP
+* Network Interface
+
+### 📊 Monitoring
+
+* Azure Monitor
+* Log Analytics Workspace
+* Alert Rules
+* Action Groups
+
+### ⚙️ Automation
+
+* Azure Logic Apps
+* Azure VM Run Command
+* Bash Scripts
+* Linux Cron Jobs
+
+### 🛠️ Development
+
+* Git
+* GitHub
+* GitHub Codespaces
 
 ---
 
-## 🚀 Future Scope
+# 📁 Repository Structure
 
-- Expand self-healing to additional services like databases
-- Add richer dashboards for live health visualization
-- Improve alert precision with advanced KQL query tuning
-- Replace fallback CronJob with Azure-native scheduling (e.g., Azure Functions)
-- Add automated Slack/Teams notifications for recovery status
+```text
+.
+├── infra/
+│   └── main.bicep
+│
+├── terraform/
+│   ├── provider.tf
+│   ├── versions.tf
+│   ├── main.tf
+│   ├── network.tf
+│   ├── vm.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   ├── terraform.tfvars.example
+│   └── .terraform.lock.hcl
+│
+├── logic-app/
+│   └── self-heal-workflow.json
+│
+├── scripts/
+│   ├── cronjob.sh
+│   └── trigger.sh
+│
+├── screenshots/
+│
+├── README.md
+├── architecture.md
+├── alert-rule.md
+├── video-links.md
+└── architechture.png
+```
+---
+
+# 🚀 Quick Start
+
+Clone the repository and validate the Terraform configuration locally.
+
+```bash
+git clone https://github.com/tania-sarkar-glitch/azure-self-healing-vm.git
+
+cd azure-self-healing-vm/terraform
+
+terraform init
+
+terraform fmt
+
+terraform validate
+```
+
+To generate an execution plan:
+
+```bash
+terraform plan
+```
+
+To deploy the infrastructure:
+
+```bash
+terraform apply
+```
+
+> **Note:** Running `terraform plan` or `terraform apply` requires:
+>
+> - Azure CLI installed
+> - An authenticated Azure session (`az login`)
+> - An active Azure subscription
 
 ---
 
-## 🧾 Note
+# 📚 Documentation
 
-The Azure resources created for this project were used for testing and demonstration purposes and have been removed to prevent unnecessary billing. All workflows and deployments are preserved via this documentation.
+Additional project documentation is available below.
+
+| Document           | Description                                                                   |
+| ------------------ | ----------------------------------------------------------------------------- |
+| 📖 architecture.md | Complete architecture, workflow, component explanations, and design decisions |
+| 🚨 alert-rule.md   | Azure Monitor alert configuration                                             |
+| 🎥 video-links.md  | Demonstration videos                                                          |
 
 ---
 
-### 👩‍💻 Author
-**Tania Sarkar** Middleware Engineer | Azure Automation Enthusiast | Cloud Reliability Explorer
+# 📸 Project Gallery
+
+### ☁️ Azure Infrastructure
+
+![VM](screenshots/01-vm.png)
+
+Shows the deployed Ubuntu Linux Virtual Machine.
+
+---
+
+### 📊 Monitoring
+
+![Monitor](screenshots/04-log-analytics-workspace.png)
+
+Azure Monitor continuously checks the health of the Nginx service.
+
+---
+
+### 🚨 Alert Detection
+
+![Alert](screenshots/06-alert-rule.png)
+
+An alert is generated when the monitoring condition is met.
+
+---
+
+### ⚙️ Automated Recovery
+
+![Logic App](screenshots/08-logic-app-flow.png)
+
+Azure Logic App executes VM Run Command to restart Nginx.
+
+---
+
+### ✅ Recovery Completed
+
+![Activity](screenshots/12-activity-log.png)
+
+The service is restored and Azure records the successful recovery.
+
+---
+
+### 🌍 Terraform Configuration Validation
+
+![Terraform Validation](screenshots/16-terraform.png)
+
+The Terraform implementation was successfully initialized, formatted, and validated using the standard Terraform workflow before deployment planning.
+
+```bash
+terraform init
+terraform fmt
+terraform validate
+```
+
+Validation Result:
+
+```text
+Success! The configuration is valid.
+```
+
+> Additional screenshots are available in the **screenshots/** folder.
+
+---
+
+# 💼 Skills Demonstrated
+
+### Cloud Engineering
+
+* Microsoft Azure
+* Azure Virtual Machines
+* Azure Networking
+* Azure Monitor
+* Azure Logic Apps
+* Log Analytics
+
+### Infrastructure as Code
+
+* Azure Bicep
+* Terraform
+* AzureRM Provider
+* Variables
+* Outputs
+* Infrastructure Validation
+* Declarative Infrastructure
+
+### DevOps
+
+* Infrastructure Automation
+* Git
+* GitHub
+* GitHub Codespaces
+* Linux Administration
+* Bash Scripting
+
+### Reliability Engineering (SRE)
+
+* Monitoring
+* Alerting
+* Automated Recovery
+* Self-Healing Infrastructure
+* Operational Resilience
+
+---
+
+# 🚀 Future Improvements
+
+* Terraform Modules
+* Remote Terraform State
+* Azure Storage Backend
+* State Locking
+* Azure Key Vault Integration
+* GitHub Actions CI/CD Pipeline
+* Managed Identity Authentication
+* Multi-Environment Deployments
+* Kubernetes Deployment
+* Prometheus & Grafana Monitoring
+
+---
+
+# 📖 Key Learnings
+
+This project provided hands-on experience with:
+
+* Infrastructure as Code using both Azure Bicep and Terraform
+* Azure infrastructure provisioning
+* Cloud automation
+* Monitoring-driven recovery
+* Infrastructure validation
+* Linux administration
+* Azure networking
+* Designing resilient cloud architectures
+* Applying DevOps and Site Reliability Engineering concepts
+
+---
+
+# 📌 Project Status
+
+> Azure resources were intentionally decommissioned after successful validation and testing to avoid unnecessary cloud costs.
+
+The Infrastructure as Code templates, Terraform implementation, automation workflows, architecture documentation, scripts, screenshots, and deployment evidence remain available within this repository.
+
+---
+
+# 👩‍💻 Author
+
+**Tania Sarkar**
+
+Middleware Engineer • Azure Cloud • Infrastructure as Code • Terraform • Bicep • DevOps • Cloud Automation • Site Reliability Engineering
+
+If you found this project helpful, feel free to ⭐ the repository or connect with me to discuss Cloud Engineering, Infrastructure as Code, Azure, Terraform, DevOps, or Site Reliability Engineering.
