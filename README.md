@@ -236,11 +236,11 @@ terraform apply
 
 Additional project documentation is available below.
 
-| Document           | Description                                                                   |
-| ------------------ | ----------------------------------------------------------------------------- |
-| 📖 architecture.md | Complete architecture, workflow, component explanations, and design decisions |
-| 🚨 alert-rule.md   | Azure Monitor alert configuration                                             |
-| 🎥 video-links.md  | Demonstration videos                                                          |
+| Document                  | Description                                                                  |
+| --------------------------| -----------------------------------------------------------------------------|
+| 📖 (docs/architecture.md) | Complete architecture, workflow, component explanations, and design decisions |
+| 🚨 (docs/alert-rule.md)   | Azure Monitor alert configuration                                             |
+| 🎥 (docs/video-links.md)  | Demonstration videos                                                          |
 
 ---
 
