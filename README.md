@@ -36,7 +36,7 @@ The solution combines Azure monitoring, automation, and Infrastructure as Code t
 
 📖 **Detailed architecture, workflow, design decisions, and engineering documentation are available in:**
 
-➡️ **[architecture.md](docs/architecture.md)**
+➡️ **[architecture.md](docs/architechture.md)**
 
 ---
 
