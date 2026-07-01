@@ -30,13 +30,13 @@ This repository showcases cloud automation, Infrastructure as Code, monitoring, 
 
 # 🏗️ Architecture
 
-![Architecture Diagram](architechture.png)
+![Architecture Diagram](docs/architechture.png)
 
 The solution combines Azure monitoring, automation, and Infrastructure as Code to automatically restore application availability.
 
 📖 **Detailed architecture, workflow, design decisions, and engineering documentation are available in:**
 
-➡️ **[architecture.md](architecture.md)**
+➡️ **[architecture.md](docs/architecture.md)**
 
 ---
 
