@@ -248,7 +248,7 @@ Additional project documentation is available below.
 
 ### ☁️ Azure Infrastructure
 
-![VM](screenshots/01-vm.png)
+![VM](docs/screenshots/01-vm.png)
 
 Shows the deployed Ubuntu Linux Virtual Machine.
 
@@ -256,7 +256,7 @@ Shows the deployed Ubuntu Linux Virtual Machine.
 
 ### 📊 Monitoring
 
-![Monitor](screenshots/04-log-analytics-workspace.png)
+![Monitor](docs/screenshots/04-log-analytics-workspace.png)
 
 Azure Monitor continuously checks the health of the Nginx service.
 
@@ -264,7 +264,7 @@ Azure Monitor continuously checks the health of the Nginx service.
 
 ### 🚨 Alert Detection
 
-![Alert](screenshots/06-alert-rule.png)
+![Alert](docs/screenshots/06-alert-rule.png)
 
 An alert is generated when the monitoring condition is met.
 
@@ -272,7 +272,7 @@ An alert is generated when the monitoring condition is met.
 
 ### ⚙️ Automated Recovery
 
-![Logic App](screenshots/08-logic-app-flow.png)
+![Logic App](docs/screenshots/08-logic-app-flow.png)
 
 Azure Logic App executes VM Run Command to restart Nginx.
 
@@ -280,7 +280,7 @@ Azure Logic App executes VM Run Command to restart Nginx.
 
 ### ✅ Recovery Completed
 
-![Activity](screenshots/12-activity-log.png)
+![Activity](docs/screenshots/12-activity-log.png)
 
 The service is restored and Azure records the successful recovery.
 
@@ -288,7 +288,7 @@ The service is restored and Azure records the successful recovery.
 
 ### 🌍 Terraform Configuration Validation
 
-![Terraform Validation](screenshots/16-terraform.png)
+![Terraform Validation](docs/screenshots/16-terraform.png)
 
 The Terraform implementation was successfully initialized, formatted, and validated using the standard Terraform workflow before deployment planning.
 
@@ -304,7 +304,7 @@ Validation Result:
 Success! The configuration is valid.
 ```
 
-> Additional screenshots are available in the **screenshots/** folder.
+> Additional screenshots are available in the **docs/screenshots/** folder.
 
 ---
 
