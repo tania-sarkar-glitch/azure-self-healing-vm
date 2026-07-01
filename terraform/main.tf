@@ -1,4 +1,6 @@
-resource "azurerm_resource_group" "rg" {
-  name     = var.resource_group_name
-  location = var.location
+module "resource_group" {
+  source = "./modules/resource-group"
+
+  resource_group_name = var.resource_group_name
+  location            = var.location
 }

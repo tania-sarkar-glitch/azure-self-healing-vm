@@ -3,17 +3,17 @@
 # ======================================
 
 output "resource_group_name" {
-  value = azurerm_resource_group.rg.name
+  value = module.resource_group.resource_group_name
 }
 
 output "vm_name" {
-  value = azurerm_linux_virtual_machine.vm.name
+  value = module.virtual_machine.vm_name
 }
 
 output "public_ip_address" {
-  value = azurerm_public_ip.pip.ip_address
+  value = module.networking.public_ip_address
 }
 
 output "virtual_network_name" {
-  value = azurerm_virtual_network.vnet.name
+  value = module.networking.virtual_network_name
 }
