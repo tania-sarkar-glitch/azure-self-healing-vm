@@ -15,3 +15,5 @@ key_vault_name = "kv-selfheal-demo"
 tenant_id = "YOUR-TENANT-ID"
 
 key_vault_sku = "standard"
+
+identity_name = "id-selfheal-demo"
