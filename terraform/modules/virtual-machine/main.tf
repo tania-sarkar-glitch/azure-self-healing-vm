@@ -4,7 +4,7 @@
 
 resource "azurerm_linux_virtual_machine" "vm" {
 
-  name                = var.vm_name
+  name = var.vm_name
 
   identity {
 
