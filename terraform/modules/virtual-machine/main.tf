@@ -5,6 +5,17 @@
 resource "azurerm_linux_virtual_machine" "vm" {
 
   name                = var.vm_name
+
+  identity {
+
+    type = "UserAssigned"
+
+    identity_ids = [
+      var.managed_identity_id
+    ]
+
+  }
+
   tags                = var.tags
   resource_group_name = var.resource_group_name
   location            = var.location

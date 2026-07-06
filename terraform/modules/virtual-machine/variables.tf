@@ -46,3 +46,8 @@ variable "os_disk_type" {
   description = "Storage account type for the OS disk"
   type        = string
 }
+
+variable "managed_identity_id" {
+  description = "User Assigned Managed Identity ID"
+  type        = string
+}
