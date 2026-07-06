@@ -14,12 +14,12 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = var.resource_group_name
 
   address_space = var.address_space
-  tags = var.tags
+  tags          = var.tags
 }
 
 resource "azurerm_subnet" "subnet" {
   name                 = var.subnet_name
-  resource_group_name = var.resource_group_name
+  resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
 
   address_prefixes = var.subnet_prefix
@@ -63,7 +63,7 @@ resource "azurerm_public_ip" "pip" {
 
   allocation_method = "Static"
   sku               = "Standard"
-  tags = var.tags
+  tags              = var.tags
 }
 
 resource "azurerm_network_interface" "nic" {
