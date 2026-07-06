@@ -41,3 +41,8 @@ variable "tags" {
   description = "Common tags applied to all Azure resources"
   type        = map(string)
 }
+
+variable "os_disk_type" {
+  description = "Storage account type for the OS disk"
+  type        = string
+}

@@ -7,3 +7,5 @@ vm_name = "selfhealvm"
 admin_username = "azureuser"
 
 ssh_public_key = "YOUR SSH KEY HERE"
+
+os_disk_type = "Standard_LRS"

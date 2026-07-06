@@ -15,5 +15,6 @@ module "virtual_machine" {
   admin_username = var.admin_username
 
   ssh_public_key = var.ssh_public_key
-  tags           = local.common_tags
+  tags         = local.common_tags
+  os_disk_type = var.os_disk_type
 }
