@@ -91,3 +91,8 @@ variable "key_vault_sku" {
   type        = string
   default     = "standard"
 }
+
+variable "identity_name" {
+  description = "User Assigned Managed Identity name"
+  type        = string
+}
