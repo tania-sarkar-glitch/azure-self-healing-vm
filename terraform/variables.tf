@@ -69,3 +69,9 @@ variable "ssh_public_key" {
   type        = string
   sensitive   = true
 }
+
+variable "os_disk_type" {
+  description = "Storage account type for the OS disk"
+  type        = string
+  default     = "Standard_LRS"
+}
