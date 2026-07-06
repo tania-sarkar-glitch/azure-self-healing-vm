@@ -14,6 +14,7 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = var.resource_group_name
 
   address_space = var.address_space
+  tags = var.tags
 }
 
 resource "azurerm_subnet" "subnet" {
@@ -52,6 +53,7 @@ resource "azurerm_network_security_group" "nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+  tags = var.tags
 }
 
 resource "azurerm_public_ip" "pip" {
@@ -61,6 +63,7 @@ resource "azurerm_public_ip" "pip" {
 
   allocation_method = "Static"
   sku               = "Standard"
+  tags = var.tags
 }
 
 resource "azurerm_network_interface" "nic" {
@@ -74,6 +77,7 @@ resource "azurerm_network_interface" "nic" {
     public_ip_address_id          = azurerm_public_ip.pip.id
     private_ip_address_allocation = "Dynamic"
   }
+  tags = var.tags
 }
 
 resource "azurerm_network_interface_security_group_association" "nic_nsg" {

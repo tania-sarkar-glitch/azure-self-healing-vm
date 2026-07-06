@@ -36,3 +36,8 @@ variable "network_interface_id" {
   description = "ID of the Network Interface attached to the Virtual Machine"
   type        = string
 }
+
+variable "tags" {
+  description = "Common tags applied to all Azure resources"
+  type        = map(string)
+}

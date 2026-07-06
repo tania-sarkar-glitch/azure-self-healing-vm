@@ -12,4 +12,5 @@ module "networking" {
 
   address_space = var.address_space
   subnet_prefix = var.subnet_prefix
+  tags = local.common_tags
 }
