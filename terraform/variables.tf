@@ -75,3 +75,19 @@ variable "os_disk_type" {
   type        = string
   default     = "Standard_LRS"
 }
+
+variable "key_vault_name" {
+  description = "Azure Key Vault name"
+  type        = string
+}
+
+variable "tenant_id" {
+  description = "Microsoft Entra ID Tenant ID"
+  type        = string
+}
+
+variable "key_vault_sku" {
+  description = "Key Vault SKU"
+  type        = string
+  default     = "standard"
+}

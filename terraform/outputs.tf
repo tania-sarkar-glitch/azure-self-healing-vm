@@ -17,3 +17,11 @@ output "public_ip_address" {
 output "virtual_network_name" {
   value = module.networking.virtual_network_name
 }
+
+output "key_vault_name" {
+  value = module.key_vault.key_vault_name
+}
+
+output "key_vault_uri" {
+  value = module.key_vault.key_vault_uri
+}
