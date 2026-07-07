@@ -411,7 +411,7 @@ Restart Nginx
 
 ---
 
-![High Level Architechture Flow](docs/Architechture/High-Level%20Architecture%20Flow.png)
+![High Level Architechture Flow](/docs/Architechture/High-Level%20Architecture%20Flow.png)
 
 ---
 
@@ -438,3 +438,5 @@ The solution has been designed around the following engineering principles:
 This project demonstrates how Azure native monitoring, automation, and security services can be combined with Infrastructure as Code to build a resilient and production-inspired cloud platform.
 
 By implementing the solution using both Azure Bicep and modular Terraform, the project showcases two Infrastructure as Code approaches while emphasizing reusable architecture, identity-based security, operational resilience, and cloud engineering best practices.
+
+[docs]: docs/

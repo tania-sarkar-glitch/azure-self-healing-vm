@@ -18,6 +18,8 @@ The infrastructure follows a **modular architecture**, separating Azure resource
 
 ---
 
+![Architechture Diagram](/docs/Architechture/Architecture%20Diagram.png)
+
 # 🏛️ Module Architecture
 
 ```text

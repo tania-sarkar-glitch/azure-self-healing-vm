@@ -111,7 +111,7 @@ The Terraform implementation is organized into reusable modules. The root module
 
 # 🚀 Deployment Flow
 
-![Deployment Flow Diagram](docs/Architecture/deployment-flow.png)
+![Deployment Flow Diagram](docs/Architechture/Deployment%20Flow%20Diagram.png)
 
 The deployment follows Terraform's dependency graph, automatically provisioning infrastructure in the correct order while maintaining module isolation and reusable architecture.
 
