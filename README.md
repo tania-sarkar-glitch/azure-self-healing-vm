@@ -1,4 +1,6 @@
-# 🚀 Azure Self-Healing VM | Azure Bicep & Terraform
+# 🚀 Azure Self-Healing VM Platform
+
+> Enterprise-grade Azure Infrastructure as Code project demonstrating automated VM recovery using Azure Monitor, Azure Logic Apps, Azure Bicep, and modular Terraform following cloud engineering best practices.
 
 ![Terraform](https://img.shields.io/badge/Terraform-1.13-844FBA?logo=terraform\&logoColor=white)
 ![Microsoft Azure](https://img.shields.io/badge/Microsoft%20Azure-Cloud-0078D4?logo=microsoftazure\&logoColor=white)
@@ -9,7 +11,7 @@
 ![Logic Apps](https://img.shields.io/badge/Azure-Logic%20Apps-0066FF)
 ![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github)
 
-> ### 🚀 A production-inspired Azure automation project demonstrating Infrastructure as Code, monitoring, alerting, and automated recovery of an Nginx web server using Azure native services.
+> ### 🚀> **A production-inspired Azure Cloud Engineering project demonstrating Infrastructure as Code, modular Terraform architecture, monitoring, alerting, identity-based security, and automated recovery of an Nginx web server using Azure native services.**.
 
 ---
 
@@ -24,37 +26,51 @@ The infrastructure has been implemented using **two Infrastructure as Code (IaC)
 * **Azure Bicep** (Azure-native IaC)
 * **HashiCorp Terraform** (Provider-based IaC)
 
+The Terraform implementation follows a modular Infrastructure as Code architecture using reusable modules for Resource Groups, Networking, Virtual Machines, Managed Identity, and Azure Key Vault. Module outputs are used to connect components while maintaining loose coupling and reusability following enterprise cloud engineering practices.
+
 This repository showcases cloud automation, Infrastructure as Code, monitoring, alerting, and recovery workflows inspired by real production environments.
 
 ---
 
 # 🏗️ Architecture
 
-![Architecture Diagram](docs/architechture.png)
+![Architecture Diagram](docs/Architechture/architechture.png)
 
-The solution combines Azure monitoring, automation, and Infrastructure as Code to automatically restore application availability.
+The solution follows a production-inspired Azure architecture where monitoring services continuously observe the virtual machine and automatically trigger recovery when an application failure is detected.
 
-📖 **Detailed architecture, workflow, design decisions, and engineering documentation are available in:**
+### Architecture Highlights
 
-➡️ **[architecture.md](docs/architechture.md)**
+• Terraform Modules
+• Managed Identity
+• Key Vault
+• RBAC
+• Azure Monitor
+• Log Analytics
+• Logic Apps
+• Linux VM
+• Networking
+• Bicep
+• Validation
+
+➡️ **[architecture.md](docs/Architechture/architechture.md)**
 
 ---
 
 # ✨ Project Highlights
 
-| Feature                     | Status |
-| --------------------------- | :----: |
-| Azure Linux Virtual Machine |    ✅   |
-| Nginx Web Server            |    ✅   |
-| Azure Monitor               |    ✅   |
-| Log Analytics Workspace     |    ✅   |
-| Alert Rules                 |    ✅   |
-| Azure Logic Apps            |    ✅   |
-| Azure VM Run Command        |    ✅   |
-| Manual Recovery             |    ✅   |
-| Cron Job Recovery           |    ✅   |
-| Azure Bicep Deployment      |    ✅   |
-| Terraform Implementation    |    ✅   |
+| Feature                        | Status |
+| ------------------------------ | :----: |
+| Modular Terraform Architecture |    ✅   |
+| Azure Bicep Deployment         |    ✅   |
+| Azure Linux VM                 |    ✅   |
+| Azure Networking               |    ✅   |
+| Azure Monitor                  |    ✅   |
+| Log Analytics                  |    ✅   |
+| Azure Key Vault                |    ✅   |
+| Managed Identity               |    ✅   |
+| RBAC                           |    ✅   |
+| Logic App Self-Healing         |    ✅   |
+| Infrastructure Validation      |    ✅   |
 
 ---
 
@@ -76,19 +92,34 @@ This project demonstrates the same Azure infrastructure using both Azure-native 
 
 The Terraform implementation follows engineering best practices by separating infrastructure into dedicated configuration files.
 
-* Provider configuration
-* Version management
-* Resource Group
-* Networking resources
-* Virtual Machine
-* Variables
-* Outputs
+## Terraform Module Architecture
+
+The Terraform implementation is organized into reusable modules. The root module orchestrates each infrastructure component by passing outputs between modules, allowing every module to have a single responsibility.
+
+![Terraform Module Dependency Diagram](docs/Architechture/Terraform%20Module%20Dependency%20Diagram.png)
+
+### Module Responsibilities
+
+| Module | Responsibility |
+|----------|---------------|
+| Resource Group | Creates the Azure Resource Group |
+| Networking | Creates VNet, Subnet, NSG, Public IP and NIC |
+| Virtual Machine | Deploys the Ubuntu Linux VM |
+| Managed Identity | Creates a User Assigned Managed Identity |
+| Key Vault | Creates Azure Key Vault |
+| Root Module | Connects all modules together |
+
+# 🚀 Deployment Flow
+
+![Deployment Flow Diagram](docs/Architecture/deployment-flow.png)
+
+The deployment follows Terraform's dependency graph, automatically provisioning infrastructure in the correct order while maintaining module isolation and reusable architecture.
 
 ### Terraform Workflow
 
 ```bash
 terraform init
-terraform fmt
+terraform fmt -recursive
 terraform validate
 terraform plan
 terraform apply
@@ -100,7 +131,7 @@ The Terraform configuration has been successfully validated.
 
 ```bash
 terraform init
-terraform fmt
+terraform fmt -recursive
 terraform validate
 ```
 
@@ -122,8 +153,11 @@ Success! The configuration is valid.
 
 ### 🏗️ Infrastructure as Code
 
-* Azure Bicep
-* Terraform
+| Tool      | Responsibility                                                 |
+| --------- | -------------------------------------------------------------- |
+| Bicep     | Azure-native deployment for the original self-healing VM stack |
+| Terraform | Modular infrastructure, networking, identity, Key Vault, RBAC  |
+
 
 ### 💻 Compute
 
@@ -161,38 +195,57 @@ Success! The configuration is valid.
 
 ---
 
+## Terraform Modules
+
+| Module | Purpose |
+|---------|---------|
+| Resource Group | Deploys Azure Resource Groups |
+| Networking | Deploys networking components |
+| Virtual Machine | Deploys Ubuntu Linux VM |
+| Managed Identity | Creates a User Assigned Managed Identity |
+| Key Vault | Stores application secrets securely |
+
+---
+
 # 📁 Repository Structure
 
 ```text
 .
 ├── infra/
 │   └── main.bicep
-│
 ├── terraform/
-│   ├── provider.tf
-│   ├── versions.tf
+│   ├── modules/
+│   │   ├── resource-group/
+│   │   ├── networking/
+│   │   ├── virtual-machine/
+│   │   ├── managed-identity/
+│   │   └── key-vault/
+│   ├── locals.tf
 │   ├── main.tf
 │   ├── network.tf
 │   ├── vm.tf
-│   ├── variables.tf
+│   ├── managed-identity.tf
+│   ├── key-vault.tf
 │   ├── outputs.tf
-│   ├── terraform.tfvars.example
-│   └── .terraform.lock.hcl
-│
+│   ├── variables.tf
+│   ├── provider.tf
+│   └── versions.tf
 ├── logic-app/
 │   └── self-heal-workflow.json
-│
 ├── scripts/
 │   ├── cronjob.sh
 │   └── trigger.sh
-│
-├── screenshots/
-│
-├── README.md
-├── architecture.md
-├── alert-rule.md
-├── video-links.md
-└── architechture.png
+├── docs/
+│   ├── Architecture/
+│   │   ├── architecture.md
+│   │   ├── architecture.png
+│   │   ├── Terraform Module Dependency Diagram.png
+│   │   └── deployment-flow.png
+│   ├── screenshots/
+│   ├── alert-rule.md
+│   └── video-links.md
+├── .github/
+└── README.md
 ```
 ---
 
@@ -207,7 +260,7 @@ cd azure-self-healing-vm/terraform
 
 terraform init
 
-terraform fmt
+terraform fmt -recursive
 
 terraform validate
 ```
@@ -236,11 +289,11 @@ terraform apply
 
 Additional project documentation is available below.
 
-| Document                  | Description                                                                  |
-| --------------------------| -----------------------------------------------------------------------------|
-| 📖 (docs/architecture.md) | Complete architecture, workflow, component explanations, and design decisions |
-| 🚨 (docs/alert-rule.md)   | Azure Monitor alert configuration                                             |
-| 🎥 (docs/video-links.md)  | Demonstration videos                                                          |
+| Document | Description |
+|----------|-------------|
+| Architecture Guide | Complete solution architecture and design decisions |
+| Alert Rule | Azure Monitor configuration |
+| Video Demonstration | Project walkthrough |                                                        |
 
 ---
 
@@ -294,7 +347,7 @@ The Terraform implementation was successfully initialized, formatted, and valida
 
 ```bash
 terraform init
-terraform fmt
+terraform fmt -recursive
 terraform validate
 ```
 
@@ -310,26 +363,35 @@ Success! The configuration is valid.
 
 # 💼 Skills Demonstrated
 
-### Cloud Engineering
+### ☁️ Azure Cloud Engineering
 
 * Microsoft Azure
-* Azure Virtual Machines
-* Azure Networking
+* Azure Virtual Machines (Linux)
+* Azure Virtual Network (VNet)
+* Azure Network Security Groups (NSG)
 * Azure Monitor
+* Azure Log Analytics
 * Azure Logic Apps
-* Log Analytics
+* Azure Key Vault
+* Azure Managed Identity
+* Azure Role-Based Access Control (RBAC)
 
-### Infrastructure as Code
+---
+
+### 🏗️ Infrastructure as Code (IaC)
 
 * Azure Bicep
 * Terraform
+* Modular Terraform Architecture
 * AzureRM Provider
-* Variables
-* Outputs
-* Infrastructure Validation
+* Reusable Terraform Modules
+* Variables & Outputs
+* Infrastructure Validation (`terraform fmt`, `validate`, `plan`)
 * Declarative Infrastructure
 
-### DevOps
+---
+
+### 🔄 DevOps & Automation
 
 * Infrastructure Automation
 * Git
@@ -338,7 +400,19 @@ Success! The configuration is valid.
 * Linux Administration
 * Bash Scripting
 
-### Reliability Engineering (SRE)
+---
+
+### 🛡️ Security & Governance
+
+* Identity-based Authentication
+* Least Privilege Access (RBAC)
+* Azure Key Vault Secrets Management
+* Managed Identity
+* Common Resource Tagging Strategy
+
+---
+
+### 📈 Site Reliability Engineering (SRE)
 
 * Monitoring
 * Alerting
@@ -350,32 +424,46 @@ Success! The configuration is valid.
 
 # 🚀 Future Improvements
 
-* Terraform Modules
-* Remote Terraform State
-* Azure Storage Backend
-* State Locking
-* Azure Key Vault Integration
+* Remote Terraform State using Azure Storage backend with state locking
 * GitHub Actions CI/CD Pipeline
-* Managed Identity Authentication
 * Multi-Environment Deployments
-* Kubernetes Deployment
-* Prometheus & Grafana Monitoring
+* Azure Policy
+* Private Endpoints
+* Hub-Spoke Network
+* Remote State
+* GitHub Actions OIDC
+* Multi-environment Deployment
+* AKS
+* Azure Landing Zone
 
 ---
 
-# 📖 Key Learnings
+# 📖 Lessons Learned
 
-This project provided hands-on experience with:
+- Infrastructure as Code using both Azure Bicep and Terraform
+- Modular Terraform design with reusable components
+- Module outputs and dependency wiring
+- Managed Identity and RBAC for secure access
+- Common tagging for governance
+- Monitoring-driven recovery workflows
+- Designing reusable Terraform modules with single responsibilities
+- Understanding Azure Resource IDs, Principal IDs, and Client IDs
+- Building Infrastructure as Code that is maintainable and scalable
 
-* Infrastructure as Code using both Azure Bicep and Terraform
-* Azure infrastructure provisioning
-* Cloud automation
-* Monitoring-driven recovery
-* Infrastructure validation
-* Linux administration
-* Azure networking
-* Designing resilient cloud architectures
-* Applying DevOps and Site Reliability Engineering concepts
+---
+
+# 🏗️ Enterprise Design Principles
+
+This project was designed using cloud engineering principles commonly found in enterprise Azure environments.
+
+- Modular Infrastructure as Code
+- Separation of Concerns
+- Least Privilege Access (RBAC)
+- Identity-based Authentication
+- Reusable Terraform Modules
+- Infrastructure Validation
+- Consistent Resource Tagging
+- Monitoring-first Operations
 
 ---
 
@@ -384,6 +472,17 @@ This project provided hands-on experience with:
 > Azure resources were intentionally decommissioned after successful validation and testing to avoid unnecessary cloud costs.
 
 The Infrastructure as Code templates, Terraform implementation, automation workflows, architecture documentation, scripts, screenshots, and deployment evidence remain available within this repository.
+
+---
+
+# 📦 Release History
+
+| Version | Highlights |
+|----------|------------|
+| v1.0 | Initial Azure Self-Healing VM using Azure Bicep |
+| v2.0 | Terraform implementation |
+| v2.0.1 | Project restructuring and documentation improvements |
+| v2.0.2 | Modular Terraform architecture, Managed Identity, Azure Key Vault, RBAC, enterprise documentation, and architecture diagrams |
 
 ---
 
