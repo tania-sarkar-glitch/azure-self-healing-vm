@@ -411,7 +411,7 @@ Restart Nginx
 
 ---
 
-![High-Level Architecture Flow] (docs/Architechture/High-Level Architecture Flow.png)
+![High Level Architechture Flow](docs/Architechture/High-Level%20Architecture%20Flow.png)
 
 ---
 
