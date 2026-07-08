@@ -14,5 +14,5 @@ locals {
 
   }
 
-  name_prefix = "${var.environment}-${var.location}"
+ # name_prefix = "${var.environment}-${var.location}"
 }
