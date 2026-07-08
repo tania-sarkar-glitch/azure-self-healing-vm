@@ -2,7 +2,7 @@ locals {
 
   common_tags = {
 
-    Environment = "Demo"
+    Environment = var.environment
 
     Project = "Azure Self-Healing Platform"
 
@@ -13,5 +13,6 @@ locals {
     Repository = "azure-self-healing-vm"
 
   }
-
+  
+  name_prefix = "${var.environment}-${var.location}"
 }

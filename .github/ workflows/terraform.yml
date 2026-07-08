@@ -26,6 +26,9 @@ jobs:
         with:
           terraform_version: 1.13.0
 
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v4
+
       - name: Terraform Init
         run: terraform init
 
@@ -35,6 +38,12 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-#Enable after authetication successful
-     # - name: Terraform Plan
-     #   run: terraform plan
+      - name: Initialize TFLint
+        run: tflint --init
+
+      - name: Run TFLint
+        run: tflint
+
+      # Enable after Azure authentication is configured
+      # - name: Terraform Plan
+      #   run: terraform plan

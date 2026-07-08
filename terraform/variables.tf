@@ -96,3 +96,13 @@ variable "identity_name" {
   description = "User Assigned Managed Identity name"
   type        = string
 }
+
+variable "environment" {
+  description = "Deployment environment"
+  type        = string
+
+  validation {
+    condition     = contains(["dev", "test", "prod"], var.environment)
+    error_message = "Environment must be one of: dev, test or prod."
+  }
+}
