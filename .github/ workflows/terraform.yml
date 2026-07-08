@@ -9,6 +9,11 @@ on:
       - main
 
 jobs:
+
+  permissions:
+  id-token: write
+  contents: read
+
   terraform:
     name: Terraform Validation
     runs-on: ubuntu-latest
@@ -47,3 +52,12 @@ jobs:
       # Enable after Azure authentication is configured
       # - name: Terraform Plan
       #   run: terraform plan
+
+# Enable after Azure OIDC configuration
+#
+# - name: Azure Login
+#   uses: azure/login@v2
+#   with:
+#     client-id: ${{ secrets.AZURE_CLIENT_ID }}
+#     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+#     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}

@@ -14,3 +14,5 @@ terraform.tfvars
 # Terraform lock file
 # Keep this file in Git for consistent provider versions
 # !.terraform.lock.hcl
+
+terraform/backend/backend.hcl
