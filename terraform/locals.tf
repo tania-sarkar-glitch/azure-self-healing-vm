@@ -13,6 +13,6 @@ locals {
     Repository = "azure-self-healing-vm"
 
   }
-  
+
   name_prefix = "${var.environment}-${var.location}"
 }
