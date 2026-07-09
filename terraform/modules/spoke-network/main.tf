@@ -10,7 +10,7 @@ resource "azurerm_virtual_network" "spoke" {
 
 resource "azurerm_subnet" "workload_subnet" {
   name                 = var.subnet_name
-  resource_group_name = module.resource_group.resource_group_name
+  resource_group_name  = module.resource_group.resource_group_name
   virtual_network_name = azurerm_virtual_network.spoke.name
 
   address_prefixes = [var.subnet_prefix]
