@@ -106,3 +106,8 @@ variable "environment" {
     error_message = "Environment must be one of: dev, test or prod."
   }
 }
+
+variable "log_analytics_workspace_name" {
+  description = "Azure Log Analytics Workspace name"
+  type        = string
+}

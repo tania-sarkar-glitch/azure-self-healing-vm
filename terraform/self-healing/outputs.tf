@@ -33,3 +33,15 @@ output "managed_identity_id" {
 output "managed_identity_principal_id" {
   value = module.managed_identity.principal_id
 }
+
+output "log_analytics_workspace_id" {
+  description = "Log Analytics Workspace ID"
+
+  value = module.log_analytics.workspace_id
+}
+
+output "log_analytics_workspace_name" {
+  description = "Log Analytics Workspace name"
+
+  value = module.log_analytics.workspace_name
+}

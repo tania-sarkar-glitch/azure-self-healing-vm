@@ -50,3 +50,8 @@ identity_name = "id-selfheal-dev"
 key_vault_name = "kv-selfheal-dev"
 tenant_id      = "YOUR-TENANT-ID"
 key_vault_sku  = "standard"
+
+# Log Analytics
+####################################
+
+log_analytics_workspace_name = "law-selfheal-dev"
