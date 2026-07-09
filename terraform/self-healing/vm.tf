@@ -1,6 +1,6 @@
 module "virtual_machine" {
 
-  source = "./modules/virtual-machine"
+  source = "../modules/virtual-machine"
 
   resource_group_name = module.resource_group.resource_group_name
 

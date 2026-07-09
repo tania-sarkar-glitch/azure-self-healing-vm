@@ -1,6 +1,6 @@
 module "policy" {
 
-  source = "./modules/policy"
+  source = "../modules/policy"
 
   policy_name = "allowed-locations"
 

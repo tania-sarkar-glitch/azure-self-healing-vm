@@ -1,5 +1,5 @@
 module "networking" {
-  source = "./modules/networking"
+  source = "../modules/networking"
 
   resource_group_name = module.resource_group.resource_group_name
   location            = var.location
