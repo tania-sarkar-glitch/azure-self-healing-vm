@@ -1,4 +1,7 @@
-variable "hub_to_spoke_name" {}
+variable "hub_to_spoke_name" {
+  description = "Hub to Spoke peering name"
+  type        = string
+}
 
 variable "spoke_to_hub_name" {}
 

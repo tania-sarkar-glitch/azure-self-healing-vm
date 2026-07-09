@@ -1,7 +1,9 @@
 output "hub_vnet_id" {
-  value = azurerm_virtual_network.hub.id
+  description = "Resource ID of the Hub Virtual Network"
+  value       = azurerm_virtual_network.hub.id
 }
 
 output "hub_vnet_name" {
-  value = azurerm_virtual_network.hub.name
+  description = "Name of the Hub Virtual Network"
+  value       = azurerm_virtual_network.hub.name
 }
