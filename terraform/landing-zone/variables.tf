@@ -61,3 +61,9 @@ variable "workload_subnet_prefix" {
   description = "Workload subnet CIDR"
   type        = string
 }
+
+variable "private_dns_zone_name" {
+  description = "Private DNS Zone Name"
+
+  type = string
+}

@@ -45,3 +45,15 @@ output "spoke_to_hub_peering_id" {
 
   value = module.vnet_peering.spoke_to_hub_peering_id
 }
+
+output "private_dns_zone_id" {
+
+  value = module.private_dns.private_dns_zone_id
+
+}
+
+output "private_dns_zone_name" {
+
+  value = module.private_dns.private_dns_zone_name
+
+}

@@ -39,3 +39,9 @@ spoke_address_space = [
 workload_subnet_name = "snet-workload-dev"
 
 workload_subnet_prefix = "10.1.1.0/24"
+
+####################################
+# Private DNS
+####################################
+
+private_dns_zone_name = "privatelink.vaultcore.azure.net"
