@@ -21,3 +21,15 @@ resource "azurerm_subnet" "shared_services" {
   virtual_network_name = azurerm_virtual_network.hub.name
   address_prefixes     = [var.shared_services_subnet]
 }
+
+resource "azurerm_subnet" "private_endpoint" {
+
+  name = "PrivateEndpoints"
+  resource_group_name = var.resource_group_name
+  virtual_network_name = azurerm_virtual_network.hub.name
+  address_prefixes = [
+    var.private_endpoint_subnet
+  ]
+  private_endpoint_network_policies = "Disabled"
+
+}

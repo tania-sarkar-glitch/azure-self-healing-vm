@@ -32,3 +32,8 @@ variable "tags" {
   description = "Common resource tags"
   type        = map(string)
 }
+
+variable "private_endpoint_subnet" {
+  description = "Address prefix for the Private Endpoint subnet"
+  type        = string
+}

@@ -1,9 +1,19 @@
 output "hub_vnet_id" {
-  description = "Resource ID of the Hub Virtual Network"
-  value       = azurerm_virtual_network.hub.id
+  value = azurerm_virtual_network.hub.id
 }
 
 output "hub_vnet_name" {
-  description = "Name of the Hub Virtual Network"
-  value       = azurerm_virtual_network.hub.name
+  value = azurerm_virtual_network.hub.name
+}
+
+output "gateway_subnet_id" {
+  value = azurerm_subnet.gateway.id
+}
+
+output "shared_services_subnet_id" {
+  value = azurerm_subnet.shared_services.id
+}
+
+output "private_endpoint_subnet_id" {
+  value = azurerm_subnet.private_endpoint.id
 }

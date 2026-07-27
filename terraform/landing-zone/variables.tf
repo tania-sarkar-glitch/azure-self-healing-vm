@@ -67,3 +67,9 @@ variable "private_dns_zone_name" {
 
   type = string
 }
+
+variable "private_endpoint_subnet" {
+  description = "Private Endpoint subnet CIDR"
+
+  type = string
+}

@@ -26,6 +26,8 @@ module "hub_network" {
 
   shared_services_subnet = var.shared_services_subnet_prefix
 
+  private_endpoint_subnet = var.private_endpoint_subnet
+
   tags = local.common_tags
 
 }
