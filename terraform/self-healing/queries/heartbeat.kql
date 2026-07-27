@@ -1,0 +1,4 @@
+Heartbeat
+| where Computer contains "selfhealvm"
+| summarize LastHeartbeat = max(TimeGenerated) by Computer
+| where LastHeartbeat < ago(2m)

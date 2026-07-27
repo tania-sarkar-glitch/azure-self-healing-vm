@@ -5,9 +5,9 @@ resource "azurerm_virtual_network_peering" "hub_to_spoke" {
   remote_virtual_network_id = var.spoke_vnet_id
 
   allow_virtual_network_access = true
-  allow_forwarded_traffic       = true
-  allow_gateway_transit         = false
-  use_remote_gateways           = false
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = false
+  use_remote_gateways          = false
 }
 
 resource "azurerm_virtual_network_peering" "spoke_to_hub" {
@@ -17,7 +17,7 @@ resource "azurerm_virtual_network_peering" "spoke_to_hub" {
   remote_virtual_network_id = var.hub_vnet_id
 
   allow_virtual_network_access = true
-  allow_forwarded_traffic       = true
-  allow_gateway_transit         = false
-  use_remote_gateways           = false
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = false
+  use_remote_gateways          = false
 }

@@ -45,3 +45,25 @@ output "log_analytics_workspace_name" {
 
   value = module.log_analytics.workspace_name
 }
+
+output "action_group_id" {
+  description = "Azure Monitor Action Group ID"
+  value       = module.action_group.action_group_id
+}
+
+output "action_group_name" {
+  description = "Azure Monitor Action Group name"
+  value       = module.action_group.action_group_name
+}
+
+output "scheduled_query_alert_id" {
+  value = module.scheduled_query_alert.scheduled_query_alert_id
+}
+
+output "scheduled_query_alert_name" {
+  value = module.scheduled_query_alert.scheduled_query_alert_name
+}
+
+output "diagnostic_setting_id" {
+  value = module.diagnostic_settings.diagnostic_setting_id
+}

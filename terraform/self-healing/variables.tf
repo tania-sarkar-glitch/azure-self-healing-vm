@@ -111,3 +111,38 @@ variable "log_analytics_workspace_name" {
   description = "Azure Log Analytics Workspace name"
   type        = string
 }
+
+variable "action_group_name" {
+  description = "Azure Monitor Action Group name"
+  type        = string
+}
+
+variable "action_group_short_name" {
+  description = "Short name for the Action Group"
+  type        = string
+}
+
+variable "action_group_receiver_name" {
+  description = "Email receiver display name"
+  type        = string
+}
+
+variable "action_group_email" {
+  description = "Email address for Azure Monitor notifications"
+  type        = string
+}
+
+variable "scheduled_query_alert_name" {
+  description = "Scheduled Query Alert name"
+  type        = string
+}
+
+variable "scheduled_query_file" {
+  description = "KQL query filename"
+  type        = string
+}
+
+variable "diagnostic_setting_name" {
+  description = "Diagnostic Setting name"
+  type        = string
+}

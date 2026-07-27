@@ -55,3 +55,33 @@ key_vault_sku  = "standard"
 ####################################
 
 log_analytics_workspace_name = "law-selfheal-dev"
+
+####################################
+# Azure Monitor Action Group
+####################################
+
+action_group_name          = "ag-selfheal-dev"
+action_group_short_name    = "selfheal"
+action_group_receiver_name = "PlatformAdmin"
+
+# Placeholder until deployment
+action_group_email = "admin@example.com"
+
+####################################
+# Scheduled Query Alert
+####################################
+
+scheduled_query_alert_name = "sqa-selfheal-dev"
+
+scheduled_query = "Heartbeat | summarize Count = count() by Computer"
+
+
+##############
+
+scheduled_query_file = "heartbeat.kql"
+
+####################################
+# Diagnostic Settings
+####################################
+
+diagnostic_setting_name = "diag-selfheal-dev"
