@@ -1,0 +1,9 @@
+Syslog
+| where ProcessName =~ "nginx"
+| project
+    TimeGenerated,
+    Computer,
+    Facility,
+    SeverityLevel,
+    SyslogMessage
+| order by TimeGenerated desc

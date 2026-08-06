@@ -32,6 +32,7 @@ resource "azurerm_network_security_group" "nsg" {
 
   security_rule {
     name                       = "AllowHTTP"
+    description                = "Allow inbound HTTP traffic for NGINX"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
@@ -44,6 +45,7 @@ resource "azurerm_network_security_group" "nsg" {
 
   security_rule {
     name                       = "AllowSSH"
+    description                = "Allow SSH for VM administration"
     priority                   = 101
     direction                  = "Inbound"
     access                     = "Allow"
@@ -72,7 +74,7 @@ resource "azurerm_network_interface" "nic" {
   resource_group_name = var.resource_group_name
 
   ip_configuration {
-    name                          = "ipconfig"
+    name                          = "${var.nic_name}-ipconfig"
     subnet_id                     = azurerm_subnet.subnet.id
     public_ip_address_id          = azurerm_public_ip.pip.id
     private_ip_address_allocation = "Dynamic"

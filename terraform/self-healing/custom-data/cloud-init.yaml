@@ -1,0 +1,55 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - nginx
+  - curl
+
+write_files:
+
+  - path: /opt/self-healing/check-nginx.sh
+    permissions: "0755"
+    owner: root:root
+    content: |
+      #!/bin/bash
+
+      LOG_FILE="/var/log/self-healing.log"
+
+      SERVICE="nginx"
+
+      HOSTNAME=$(hostname)
+
+      TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+      HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
+
+      if [ "$HTTP_STATUS" = "200" ]; then
+          echo "[$TIMESTAMP] STATUS=Healthy HOST=$HOSTNAME HTTP_STATUS=200" >> "$LOG_FILE"
+          exit 0
+      fi
+
+      echo "[$TIMESTAMP] STATUS=Failed HOST=$HOSTNAME HTTP_STATUS=$HTTP_STATUS SERVICE=$SERVICE" >> "$LOG_FILE"
+
+      exit 1
+
+  - path: /etc/cron.d/self-healing
+    permissions: "0644"
+    owner: root:root
+    content: |
+      * * * * * root /opt/self-healing/check-nginx.sh >/dev/null 2>&1
+
+runcmd:
+
+  - mkdir -p /opt/self-healing
+
+  - touch /var/log/self-healing.log
+
+  - chmod +x /opt/self-healing/check-nginx.sh
+
+  - systemctl enable nginx
+
+  - systemctl start nginx
+
+  - systemctl restart cron

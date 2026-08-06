@@ -20,7 +20,13 @@ variable "vm_size" {
   description = "Azure Virtual Machine size"
   type        = string
   default     = "Standard_D2s_v3"
+
+  validation {
+    condition     = length(var.vm_size) > 0
+    error_message = "VM size cannot be empty."
+  }
 }
+
 variable "ssh_public_key" {
   description = "SSH public key used to access the Linux VM"
   type        = string
@@ -49,5 +55,10 @@ variable "os_disk_type" {
 
 variable "managed_identity_id" {
   description = "User Assigned Managed Identity ID"
+  type        = string
+}
+
+variable "custom_data" {
+  description = "Cloud-init configuration"
   type        = string
 }

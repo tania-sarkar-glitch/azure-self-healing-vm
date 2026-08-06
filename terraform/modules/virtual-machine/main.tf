@@ -28,6 +28,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   ]
 
   disable_password_authentication = true
+  patch_mode                      = "ImageDefault"
+  patch_assessment_mode           = "ImageDefault"
 
   admin_ssh_key {
     username   = var.admin_username
@@ -45,7 +47,16 @@ resource "azurerm_linux_virtual_machine" "vm" {
     sku       = "22_04-lts-gen2"
     version   = "latest"
   }
-
+  boot_diagnostics {
+    storage_account_uri = null
+  }
   computer_name = var.vm_name
 
+  custom_data = base64encode(var.custom_data)
+  
+  lifecycle {
+    ignore_changes = [
+      tags
+    ]
+  }
 }

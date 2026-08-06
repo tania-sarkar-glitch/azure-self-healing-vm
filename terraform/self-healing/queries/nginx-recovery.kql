@@ -1,0 +1,7 @@
+Syslog
+| where SyslogMessage contains "NGINX restarted successfully"
+| project
+    TimeGenerated,
+    Computer,
+    SyslogMessage
+| order by TimeGenerated desc

@@ -8,6 +8,8 @@ resource "azurerm_key_vault" "kv" {
 
   sku_name = var.sku_name
 
+  rbac_authorization_enabled = true
+
   purge_protection_enabled   = false
   soft_delete_retention_days = 7
 

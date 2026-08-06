@@ -1,3 +1,8 @@
+##############################################
+# Assign Managed Identity permission to read
+# secrets from Azure Key Vault using Azure RBAC
+##############################################
+
 resource "azurerm_role_assignment" "key_vault_access" {
 
   scope = module.key_vault.key_vault_id
@@ -6,4 +11,8 @@ resource "azurerm_role_assignment" "key_vault_access" {
 
   principal_id = module.managed_identity.principal_id
 
+  depends_on = [
+    module.key_vault,
+    module.managed_identity
+  ]
 }

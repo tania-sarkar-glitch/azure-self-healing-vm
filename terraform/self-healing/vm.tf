@@ -21,4 +21,6 @@ module "virtual_machine" {
   os_disk_type = var.os_disk_type
 
   managed_identity_id = module.managed_identity.identity_id
+
+  custom_data = file("${path.module}/custom-data/cloud-init.yaml")
 }

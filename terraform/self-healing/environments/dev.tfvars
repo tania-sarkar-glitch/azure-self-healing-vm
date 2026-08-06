@@ -73,11 +73,6 @@ action_group_email = "admin@example.com"
 
 scheduled_query_alert_name = "sqa-selfheal-dev"
 
-scheduled_query = "Heartbeat | summarize Count = count() by Computer"
-
-
-##############
-
 scheduled_query_file = "heartbeat.kql"
 
 ####################################
