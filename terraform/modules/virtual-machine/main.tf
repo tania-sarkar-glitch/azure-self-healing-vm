@@ -53,7 +53,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   computer_name = var.vm_name
 
   custom_data = base64encode(var.custom_data)
-  
+
   lifecycle {
     ignore_changes = [
       tags
