@@ -36,6 +36,10 @@ resource "azurerm_monitor_data_collection_rule" "self_healing" {
         "*"
       ]
 
+      streams = [
+        "Microsoft-Syslog"
+      ]
+
       name = "syslog"
 
     }

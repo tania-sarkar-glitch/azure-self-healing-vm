@@ -8,7 +8,7 @@ module "scheduled_query_alert" {
 
   resource_group_name = module.resource_group.resource_group_name
 
-  log_analytics_workspace_id = module.log_analytics.workspace_id
+  log_analytics_workspace_id = module.log_analytics.workspace_resource_id
 
   action_group_id = module.action_group.action_group_id
 

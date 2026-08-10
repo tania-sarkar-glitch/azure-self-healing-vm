@@ -35,9 +35,7 @@ output "managed_identity_principal_id" {
 }
 
 output "log_analytics_workspace_id" {
-  description = "Log Analytics Workspace ID"
-
-  value = module.log_analytics.workspace_id
+  value = module.log_analytics.workspace_resource_id
 }
 
 output "log_analytics_workspace_name" {

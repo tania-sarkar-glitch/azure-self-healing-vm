@@ -6,7 +6,7 @@ module "diagnostic_settings" {
 
   target_resource_id = module.virtual_machine.vm_id
 
-  log_analytics_workspace_id = module.log_analytics.workspace_id
+  log_analytics_workspace_id = module.log_analytics.workspace_resource_id
 
   enabled_log_categories = []
 
