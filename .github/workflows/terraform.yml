@@ -151,7 +151,7 @@ jobs:
           name: self-healing-validation
           path: terraform/self-healing
 
-azure-auth-test:
+  azure-auth-test:
     name: Azure OIDC Authentication Test
     runs-on: ubuntu-latest
 
