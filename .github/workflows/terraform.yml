@@ -150,3 +150,29 @@ jobs:
         with:
           name: self-healing-validation
           path: terraform/self-healing
+
+azure-auth-test:
+    name: Azure OIDC Authentication Test
+    runs-on: ubuntu-latest
+
+    environment: azure-dev
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Verify Azure Authentication
+        run: |
+          az account show
+          az account list --output table
