@@ -119,7 +119,7 @@ jobs:
             ${{ runner.os }}-terraform-
 
       - name: Setup TFLint
-        uses: terraform-linters/setup-tflint@v4
+        uses: terraform-linters/setup-tflint@v6
 
       - name: Terraform Init
         run: terraform init -backend=false
