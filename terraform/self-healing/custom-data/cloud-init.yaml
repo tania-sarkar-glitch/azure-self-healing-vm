@@ -16,11 +16,8 @@ write_files:
       #!/bin/bash
 
       LOG_FILE="/var/log/self-healing.log"
-
       SERVICE="nginx"
-
       HOSTNAME=$(hostname)
-
       TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
       HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
@@ -30,7 +27,22 @@ write_files:
           exit 0
       fi
 
-      echo "[$TIMESTAMP] STATUS=Failed HOST=$HOSTNAME HTTP_STATUS=$HTTP_STATUS SERVICE=$SERVICE" >> "$LOG_FILE"
+      echo "[$TIMESTAMP] STATUS=Failed HOST=$HOSTNAME HTTP_STATUS=$HTTP_STATUS SERVICE=$SERVICE ACTION=Restarting" >> "$LOG_FILE"
+
+      systemctl restart "$SERVICE"
+
+      sleep 5
+
+      HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
+
+      if [ "$HTTP_STATUS" = "200" ]; then
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "[$TIMESTAMP] STATUS=Recovered HOST=$HOSTNAME HTTP_STATUS=200 SERVICE=$SERVICE ACTION=Restarted" >> "$LOG_FILE"
+          exit 0
+      fi
+
+      TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+      echo "[$TIMESTAMP] STATUS=RecoveryFailed HOST=$HOSTNAME HTTP_STATUS=$HTTP_STATUS SERVICE=$SERVICE" >> "$LOG_FILE"
 
       exit 1
 
