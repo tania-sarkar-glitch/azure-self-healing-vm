@@ -8,4 +8,10 @@ resource "azurerm_resource_group_policy_assignment" "allowed_location" {
 
   location = var.location
 
+  parameters = jsonencode({
+    listOfAllowedLocations = {
+      value = [var.location]
+    }
+  })
+
 }

@@ -1,15 +1,8 @@
 terraform {
-  /*
   backend "azurerm" {
-
-    resource_group_name  = "REPLACE_RG"
-
-    storage_account_name = "REPLACE_STORAGE"
-
+    resource_group_name  = "rg-terraform-state"
+    storage_account_name = "stselfhealterraform"
     container_name       = "tfstate"
-
-    key                  = "azure-self-healing-vm.tfstate"
-
+    key                  = "landing-zone.tfstate"
   }
- */
 }

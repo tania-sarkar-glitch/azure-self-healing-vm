@@ -50,4 +50,4 @@ private_dns_zone_name = "privatelink.vaultcore.azure.net"
 # Hub Private Endpoint Subnet
 ####################################
 
-private_endpoint_subnet = "10.100.3.0/24"
+private_endpoint_subnet = "10.0.3.0/24"

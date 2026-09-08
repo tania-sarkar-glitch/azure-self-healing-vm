@@ -30,10 +30,10 @@ subnet_prefix = [
 ####################################
 
 vm_name        = "vm-selfheal-dev"
-vm_size        = "Standard_D2s_v3"
+vm_size        = "Standard_D2s_v6"
 admin_username = "azureuser"
 
-ssh_public_key = "YOUR SSH KEY HERE"
+ssh_public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPIjMKNPJi+pKP/94/sBDXYpMwDGNTZ/bzcjt7jBoqt9 selfhealvm"
 
 os_disk_type = "Standard_LRS"
 
@@ -47,8 +47,8 @@ identity_name = "id-selfheal-dev"
 # Key Vault
 ####################################
 
-key_vault_name = "kv-selfheal-dev"
-tenant_id      = "YOUR-TENANT-ID"
+key_vault_name = "kv-selfheal-dev-ts"
+tenant_id      = "36d09106-4c80-4fb6-bb29-93d203e34f47"
 key_vault_sku  = "standard"
 
 # Log Analytics
