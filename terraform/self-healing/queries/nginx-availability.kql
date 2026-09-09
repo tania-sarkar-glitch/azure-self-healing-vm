@@ -1,4 +1,4 @@
 Heartbeat
-| where Computer contains "selfhealvm"
+| where Computer contains "vm-selfheal-dev"
 | summarize LastHeartbeat = max(TimeGenerated) by Computer
 | extend Status = iff(LastHeartbeat < ago(2m), "Unavailable", "Available")
